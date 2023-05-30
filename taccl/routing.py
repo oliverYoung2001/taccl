@@ -151,7 +151,8 @@ class TACCLRouting:
 
         if self.topology.copies > 1:
             self._add_relay_relaxation(opt, SND)
-        if self.route_sketch.internode.enforce_ordering:
+        # print(f'self.route_sketch.internode: {self.route_sketch.internode}')    # = None for n1
+        if self.route_sketch.internode and self.route_sketch.internode.enforce_ordering:
             self._enforce_ordering(opt)
 
         self._add_symmetry(opt, L)

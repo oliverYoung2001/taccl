@@ -13,6 +13,7 @@ from .known_topologies import KnownTopologies
 from .common import *
 
 def optimize_comm_sketch(topology, route_sketch, collective, distribute_over_links=False):
+    # print(f'route_sketch: {route_sketch}')
     path_encoder = TACCLRouting(topology, route_sketch, collective)
     orderer = HeuristicOrderer(topology, route_sketch, collective)
     scheduler = TACCLScheduler(topology, route_sketch, collective)

@@ -45,10 +45,15 @@ def validate_and_modify_topo(topo_json, check_links=True):
     return topo_json
 
 def custom(topo_file):
-    topo_json = json.load(topo_file)
+    # print('in custom !!!')
+    # print(f'topo_file: {topo_file}')
+    f = open(topo_file, "r")
+    topo_json = json.load(f)
     topo_json = validate_and_modify_topo(topo_json, check_links=True)
     gpus_per_node = topo_json["gpus_per_node"]
     links = topo_json["links"]
+    alpha = topo_json["alpha"]
+    betas = topo_json["betas"]
     invbws = topo_json["invbws"]
     nics_per_node = topo_json["nics_per_node"]
     remote_invbw = topo_json["remote_invbw"]
